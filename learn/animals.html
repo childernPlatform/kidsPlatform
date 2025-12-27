@@ -1,1 +1,61 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animals</title>
+<style>
+body { margin:0; font-family:'Segoe UI'; background:#F9F9F9; display:flex; justify-content:center; padding-top:40px; }
+.container { max-width:450px; padding:20px; }
+h2 { font-size:32px; margin-bottom:30px; text-align:center; }
+.video-list { display:flex; flex-direction:column; gap:15px; }
+.video-card { background:white; border-radius:24px; padding:12px; display:flex; cursor:pointer; border:1px solid #eee; }
+.thumbnail { width:140px; height:90px; border-radius:16px; flex-shrink:0; }
+.video-info { margin-left:16px; flex:1; }
+.duration { font-size:13px; color:#777; text-align:right; }
+.title { font-size:18px; font-weight:700; }
+ .metadata { font-size: 12px; color: #AAA; }
+</style>
+</head>
+<body>
+<div class="container">
+<h2>🐘 Which one would you like to watch?</h2>
+<div class="video-list">
+
+<div class="video-card" onclick="play('PbYOP8gJY_w','Adorable Baby Animals')">
+<img class="thumbnail" src="https://img.youtube.com/vi/PbYOP8gJY_w/mqdefault.jpg">
+<div class="video-info">
+<div class="duration">5 min</div>
+<div class="title">Adorable Baby Animals</div>
+ <div class="metadata">One video • No autoplay</div>
+</div>
+</div>
+
+<div class="video-card" onclick="play('-jtAiOZQtnU','5‑Minute Baby Animal Stories')">
+<img class="thumbnail" src="https://img.youtube.com/vi/-jtAiOZQtnU/mqdefault.jpg">
+<div class="video-info">
+<div class="duration">5 min</div>
+<div class="title">5‑Minute Baby Animal Stories</div>
+ <div class="metadata">One video • No autoplay</div>
+</div>
+</div>
+
+<div class="video-card" onclick="play('p_8jdR5m2kc','Baby Animals Being Cute!')">
+<img class="thumbnail" src="https://img.youtube.com/vi/p_8jdR5m2kc/mqdefault.jpg">
+<div class="video-info">
+<div class="duration">5 min</div>
+<div class="title">Baby Animals Being Cute!</div>
+ <div class="metadata">One video • No autoplay</div>
+</div>
+</div>
+
+</div>
+</div>
+<script>
+function play(id,title){
+  location.href=`player.html?id=${id}&title=${encodeURIComponent(title)}`;
+}
+</script>
+</body>
+</html>
