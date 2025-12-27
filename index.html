@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wonderjoy – Intent Screen</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+      background: #F4F7FB;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 360px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #2E3A59;
+      margin-bottom: 32px;
+    }
+
+    .intent-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .intent-card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .intent-card:hover {
+      transform: scale(1.05);
+    }
+
+    .emoji {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .label {
+      font-size: 18px;
+      color: #2E3A59;
+    }
+
+    /* Individual intent colors */
+    .learn { background: #E6F0FF; }
+    .story { background: #FFF4E6; }
+    .play  { background: #E8FFF3; }
+    .calm  { background: #F0ECFF; }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>What do you feel like doing today?</h1>
+
+    <div class="intent-grid">
+      <div class="intent-card learn" onclick="selectIntent('Learn')">
+        <div class="emoji">📘</div>
+        <div class="label">Learn</div>
+      </div>
+
+      <div class="intent-card story" onclick="selectIntent('Story')">
+        <div class="emoji">📖</div>
+        <div class="label">Story</div>
+      </div>
+
+      <div class="intent-card play" onclick="selectIntent('Play')">
+        <div class="emoji">🎨</div>
+        <div class="label">Play</div>
+      </div>
+
+      <div class="intent-card calm" onclick="selectIntent('Calm')">
+        <div class="emoji">🌙</div>
+        <div class="label">Calm</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function selectIntent(intent) {
+      alert("You chose: " + intent);
+      // Next step later:
+      // window.location.href = "videos.html?intent=" + intent;
+    }
+  </script>
+
+</body>
+</html>
