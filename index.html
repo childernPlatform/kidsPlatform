@@ -1,92 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Wonderjoy – Intent Flow</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wonderjoy – Intent Flow</title>
 
-<style>
-  body {
-    margin: 0;
-    font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
-    background: #F4F7FB;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+      background: #F4F7FB;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-  .container {
-    width: 100%;
-    max-width: 360px;
-    padding: 24px;
-    text-align: center;
-  }
+    .container {
+      width: 100%;
+      max-width: 360px;
+      padding: 24px;
+      text-align: center;
+    }
 
-  h1 {
-    font-size: 24px;
-    color: #2E3A59;
-    margin-bottom: 24px;
-  }
+    h1 {
+      font-size: 24px;
+      color: #2E3A59;
+      margin-bottom: 24px;
+    }
 
-  /* GRID (used for both screens) */
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
 
-  .card {
-    border-radius: 20px;
-    padding: 22px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
+    .card {
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      background: white; /* Default fallback */
+    }
 
-  .card:hover {
-    transform: scale(1.05);
-  }
+    .card:hover {
+      transform: scale(1.05);
+    }
 
-  .emoji {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
+    .emoji {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
 
-  .label {
-    font-size: 18px;
-    color: #2E3A59;
-  }
+    .label {
+      font-size: 18px;
+      color: #2E3A59;
+    }
 
-  /* COLORS */
-  .blue   { background: #E6F0FF; }
-  .orange { background: #FFF4E6; }
-  .green  { background: #E8FFF3; }
-  .purple { background: #F0ECFF; }
+    /* COLORS */
+    .blue   { background: #E6F0FF; }
+    .orange { background: #FFF4E6; }
+    .green  { background: #E8FFF3; }
+    .purple { background: #F0ECFF; }
 
-  /* SCREEN VISIBILITY */
-  .screen {
-    display: none;
-  }
+    /* SCREEN VISIBILITY */
+    .screen {
+      display: none;
+    }
 
-  .screen.active {
-    display: block;
-  }
+    .screen.active {
+      display: block;
+    }
 
-  .back {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #6B7A99;
-    cursor: pointer;
-  }
-</style>
+    .back {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #6B7A99;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
 
 <div class="container">
 
-  <!-- SCREEN 1: INTENT -->
   <div id="intentScreen" class="screen active">
     <h1>What do you feel like doing today?</h1>
 
@@ -113,12 +112,9 @@
     </div>
   </div>
 
-  <!-- SCREEN 2: TOPICS -->
   <div id="topicScreen" class="screen">
     <h1 id="topicTitle"></h1>
-
     <div class="grid" id="topicGrid"></div>
-
     <div class="back" onclick="goBack()">← Go back</div>
   </div>
 
@@ -152,7 +148,10 @@
     ]
   };
 
+  let currentIntent = "";
+
   function showTopics(intent) {
+    currentIntent = intent;
     document.getElementById("intentScreen").classList.remove("active");
     document.getElementById("topicScreen").classList.add("active");
 
@@ -169,7 +168,16 @@
         <div class="emoji">${item.emoji}</div>
         <div class="label">${item.label}</div>
       `;
-      div.onclick = () => alert(intent + " → " + item.label);
+      
+      // LOGIC TO CONNECT TO VIDEOS.HTML
+      div.onclick = () => {
+        if (intent === "Learn" && item.label === "Animals") {
+          window.location.href = "videos.html";
+        } else {
+          alert("Videos for " + item.label + " are coming soon!");
+        }
+      };
+      
       grid.appendChild(div);
     });
   }
