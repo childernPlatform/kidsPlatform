@@ -118,10 +118,10 @@ const data = {
     { label: "Art & Craft", emoji: "🎨", color: "purple", page: "learn/art.html" }
   ],
   Story: [
-    { label: "Bedtime", emoji: "🌙", color: "purple" },
-    { label: "Moral", emoji: "❤️", color: "orange" },
-    { label: "Adventure", emoji: "🗺️", color: "blue" },
-    { label: "Funny", emoji: "😂", color: "green" }
+    { label: "Bedtime", emoji: "🌙", color: "purple", page: "story/bedtime.html" },
+    { label: "Moral", emoji: "❤️", color: "orange", page: "story/moral.html" },
+    { label: "Adventure", emoji: "🗺️", color: "blue", page: "story/adventure.html" },
+    { label: "Funny", emoji: "😂", color: "green", page: "story/funny.html" }
   ],
   Play: [
     { label: "Drawing", emoji: "✏️", color: "orange" },
@@ -136,6 +136,7 @@ const data = {
     { label: "Quiet Time", emoji: "🌈", color: "orange" }
   ]
 };
+
 
 function showTopics(intent) {
   document.getElementById("intentScreen").classList.remove("active");
