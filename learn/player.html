@@ -81,27 +81,6 @@ body {
   height: 100%;
 }
 
-/* Next page overlay */
-#nextOverlay {
-  display: none;
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  z-index: 20;
-  justify-content: center;
-  align-items: center;
-}
-
-#nextBtn {
-  padding: 16px 32px;
-  background: #A0C4FF;
-  border: none;
-  border-radius: 30px;
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
 /* Info section */
 .info-section {
   margin-top: 20px;
@@ -133,11 +112,6 @@ h2 {
       <div class="tap-text">Tap to play</div>
     </div>
 
-    <!-- Next Page overlay -->
-    <div id="nextOverlay">
-      <button id="nextBtn" onclick="goNext()">Next Page ▶</button>
-    </div>
-
     <!-- YouTube Player -->
     <div id="player"></div>
   </div>
@@ -150,7 +124,7 @@ h2 {
 </div>
 
 <script>
-/* Get URL parameters */
+/* Read URL params */
 const params = new URLSearchParams(window.location.search);
 const videoId = params.get("id") || "PbYOP8gJY_w";
 const title = params.get("title") || "Wonderjoy Video";
@@ -159,14 +133,14 @@ const duration = params.get("duration") || "5 min";
 document.getElementById("videoTitle").innerText = title;
 document.getElementById("videoTime").innerText = duration;
 
-/* Load YouTube IFrame API */
+/* Load YouTube API */
 const tag = document.createElement("script");
 tag.src = "https://www.youtube.com/iframe_api";
 document.head.appendChild(tag);
 
 let player;
 
-/* Create player */
+/* Create YouTube player */
 function onYouTubeIframeAPIReady() {
   player = new YT.Player("player", {
     videoId: videoId,
@@ -184,10 +158,10 @@ function onYouTubeIframeAPIReady() {
   });
 }
 
-/* Detect video end */
+/* 🔥 KEY FIX: instant redirect when video ends */
 function onPlayerStateChange(event) {
   if (event.data === YT.PlayerState.ENDED) {
-    document.getElementById("nextOverlay").style.display = "flex";
+    window.location.href = "nextpage.html";
   }
 }
 
@@ -198,11 +172,6 @@ document.getElementById("overlay").onclick = function () {
     this.style.display = "none";
   }
 };
-
-/* Next page navigation */
-function goNext() {
-  window.location.href = "nextpage.html";
-}
 </script>
 
 </body>
